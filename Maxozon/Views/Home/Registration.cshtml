@@ -1,0 +1,80 @@
+﻿@using MaxozonContext.Models;
+@model Patient;
+@{
+    Layout = null;
+}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Регистрация Максозон </title>
+  <link rel="stylesheet" href="~/css/registration.css">
+</head>
+<body>
+  <div class="container">
+    
+    <div class="title">Регистрация</div>
+    <div class="content">
+      
+      <form method="post" >
+        <div class="user-details">
+          
+          <div class="input-box">
+            <span class="details">Ваше имя</span>
+            <input type="text" placeholder="Введите имя" asp-for="Name" required>
+          </div>
+      
+          <div class="input-box">
+            <span class="details">Имя пользователя</span>
+            <input type="text" placeholder="Введите имя пользователя" asp-for="Nickname" required>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Почта</span>
+            <input type="text" placeholder="Введите почту" asp-for="Email" required>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Номер телефона</span>
+            <input type="text" placeholder="Введите номер телефона" asp-for="Phone" required>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Пароль</span>
+            <input type="password" placeholder="Введите пароль" asp-for="Password" required>
+          </div>
+        
+          <div class="input-box">
+            <span class="details">Подтвердение пароля</span>
+            <input type="password" placeholder="Подтвердите пароль" name="pass_repeat" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          
+          <input type="radio"  id="dot-1" asp-for="Sex" value="Мужской">
+          <input type="radio"  id="dot-2" asp-for="Sex" value="Женский">
+          <span class="gender-title">Пол</span>
+          <div class="category">
+        
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Мужской</span>
+            </label>
+          
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Женский</span>
+            </label>
+          </div>
+        
+        </div>
+        <div class="back-to-main">
+            <a href="@Url.Action("Index", "Home")">Вернуться на главную</a>
+        </div>
+        <div class="registration">
+            <button type="submit">Зарегистрироваться</button>
+        </div>
+            
+    </form>
+    </div>
+  </div>
+</body>

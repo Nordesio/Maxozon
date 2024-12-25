@@ -1,8 +1,106 @@
-﻿@{
+﻿@using MaxozonContext.Models;
+@using Maxozon.Controllers;
+@{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
+@model IEnumerable<Doctor>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинская клиника Максозон</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <h1>Медицинская клиника Максозон</h1>
+        @if (ViewBag.logged == 1)
+        {
+            <div class="registration">
+                <a href="@Url.Action("HomePage", "Home")">Личный кабинет</a>
+            </div>
+        }
+        else{
+        <div class="registration">
+            <a href="@Url.Action("Registration", "Home")">Регистрация</a>
+            <a href="@Url.Action("Authorisation", "Home")">Авторизация</a>
+        </div>
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    </header>
+
+    <nav>
+        <a href="#services">Услуги</a>
+        <a href="#about">О нас</a>
+        <a href="#specialists">Наши специалисты</a>
+        <a href="#contact">Контакты</a>
+
+    </nav>
+
+    <section class="hero">
+        <h2>Ваше здоровье — наш приоритет!</h2>
+    </section>
+    <div class="container">
+
+        <section id="services" class="services">
+            <h2>Наши услуги</h2>
+            <div class="card">
+                <h3>Общая медицина</h3>
+                <p>Комплексные медицинские услуги для людей всех возрастов.</p>
+            </div>
+            <div class="card">
+                <h3>Озонотерапия</h3>
+                <p>Современные методы лечения для улучшения вашего здоровья.</p>
+            </div>
+            <div class="card">
+                <h3>Диагностика</h3>
+                <p>Современное диагностическое оборудование и опытные специалисты.</p>
+            </div>
+            <div class="card">
+                <h3>Неврология</h3>
+                <p>Терапия при мигренях, заболеваниях центральной нервной системы.</p>
+            </div>
+            <div class="card">
+                <h3>Венерология</h3>
+                <p>Диагностика и лечение инфекций, передающихся половым путём.</p>
+            </div>
+            <div class="card">
+                <h3>Хирургия</h3>
+                <p>Минимально инвазивные операции и послеоперационная реабилитация.</p>
+            </div>
+            <div class="card">
+                <h3>Офтальмология</h3>
+                <p>Коррекция зрения и лечение глазных заболеваний.</p>
+
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h2>О нас</h2>
+            <div class="info">
+                <p>В клинике "Максозон" мы объединяем передовые технологии и опыт наших специалистов для предоставления высококачественной медицинской помощи. Мы гордимся своим вниманием к пациентам, индивидуальным подходом к каждому случаю и стремлением к инновациям в медицинской практике. Каждый член нашей команды — это профессионал, имеющий признание в своей области.</p>
+                <p>Наша миссия — сделать здоровье доступным и сохранить его на долгие годы. Мы предлагаем услуги диагностики, лечения и профилактики заболеваний, ориентируясь на международные стандарты качества.</p>
+            </div>
+        </section>
+        <div class="center">
+            <h2>Наши специалисты</h2>
+        </div>
+        <section id="specialists" class="specialists">
+            @foreach (var item in Model)
+            {
+                <div class="specialist-card">
+                    <img src="@($"{item.Speciality}.jpg")" alt="@item.Speciality">
+                    <h3>@item.Name</h3>
+                    <p>@item.Description</p>
+                    <div class="button1">
+                        <a href="@Url.Action("Appointments", "Home", new { Docid = item.Id})">Просмотреть записи к врачу</a>
+                    </div>
+                </div>
+            }
+            
+        </section>
+    </div>
+    <footer id="contact">
+        <p>Контакты: info@maxozon.com | Телефон: +1-800-123-4567</p>
+        <p>&copy; 2024 Медицинская клиника Максозон. Все права защищены.</p>
+    </footer>
+</body>

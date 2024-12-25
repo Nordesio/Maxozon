@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maxozon", "Maxozon\Maxozon.csproj", "{E02EA029-AD9B-4C81-9C8A-0D5174357432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbContext", "DbContext\DbContext.csproj", "{02087911-CE15-44AD-90CF-8CB3DF895995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxozonContext", "DbContext\MaxozonContext.csproj", "{02087911-CE15-44AD-90CF-8CB3DF895995}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

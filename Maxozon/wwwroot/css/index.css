@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: url('/фонслогана.jpg') no-repeat center center/cover;
+    margin: 0;
+}
+
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header .registration {
+    position: absolute;
+    right: 1rem;
+}
+
+header .registration a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #02364f;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header .registration a:hover {
+    background-color: #003f5c;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #023e8a;
+    padding: 0.5rem 0;
+    
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0, 0.5rem;
+   
+}
+
+nav a:hover {
+    background: #0096c7;
+    border-radius: 5px;
+}
+
+.hero {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffdd57;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 65px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.services, .about, .specialists, footer {
+    border: 1px solid #023e8a; /* Обводка для разделов */
+    border-radius: 5px; /* Закругляем углы */
+    padding: 1rem; /* Добавляем внутренние отступы */
+    margin-bottom: 1.5rem; /* Отступ снизу для каждого раздела */
+    margin-left: 1rem; /* Отступ слева */
+    background-color: white; /* Фон белый, чтобы обводка была видна */
+}
+
+.center {
+    text-align: center;
+}
+
+.services h2, .about h2, .specialists h2, footer h2 {
+    padding-left: 10px; /* Отступ слева для заголовков */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+.services .card, .about .info, .specialists .specialist-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.specialists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.specialist-card img {
+    width: 220px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.specialist-card h3 {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+footer {
+    background: #023e8a;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 0; /* Уменьшаем отступы */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Уменьшаем размер шрифта для заголовка */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    header .registration {
+        right: 1rem;
+    }
+
+    .hero {
+        height: 40vh; /* Уменьшаем высоту для мобильных */
+    }
+
+    .hero h2 {
+        font-size: 2.5rem; /* Уменьшаем размер шрифта на мобильных */
+    }
+
+  
+        .services, .about, .specialists, footer {
+            margin-left: 0; /* Убираем отступ слева на мобильных */
+            margin-right: 0; /* Убираем правый отступ */
+        }
+        .services, .about, .specialists, footer {
+            padding: 1rem; /* Равные отступы */
+        }
+    .specialists {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Уменьшаем минимальную ширину карточек */
+    }
+
+    .specialist-card img {
+        width: 200px;/* Изменяем ширину изображений для мобильных */
+        height: 150px; 
+         
+    }
+
+    .services .card, .about .info, .specialists .specialist-card {
+        padding: 0.5rem; /* Уменьшаем отступы в карточках */
+    }
+
+    nav {
+        flex-direction: column; /* Переводим навигацию на вертикальное размещение */
+        padding: 1rem 0; /* Увеличиваем вертикальные отступы */
+    }
+
+    nav a {
+        padding: 1rem 0; /* Увеличиваем вертикальные отступы для ссылок */
+        margin: 0.5rem 0; /* Увеличиваем расстояние между ссылками */
+        margin-left: 10%; /* отступ слева а 10% */
+    }
+
+    footer {
+        padding: 1rem 0;
+    }
+}
+
+/* Еще более мобильная адаптация для экранов меньшего размера */
+@media (max-width: 480px) {
+    header {
+        padding: 1.2rem 0; /* Уменьшаем отступы в хедере */
+    }
+
+    header h1 {
+        font-size: 0.7rem; /* Уменьшаем шрифт заголовка */
+    }
+
+    .hero h2 {
+        font-size: 2rem; /* Еще меньше размер шрифта для хедера */
+    }
+.registration a {
+    font-size: 0.8rem;
+}
+    .specialists {
+        grid-template-columns: 1fr; /* Уменьшаем количество колонок для меньших экранов */
+    }
+
+    .specialist-card img {
+        width: 100%; /* Изображения на 100% ширины */
+        height: auto;
+    }
+}

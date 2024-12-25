@@ -1,0 +1,43 @@
+﻿@using MaxozonContext.Models;
+@model Patient;
+@{
+    Layout = null;
+}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Авторизация Максозон </title>
+  <link rel="stylesheet" href="~/css/registration.css">
+</head>
+<body>
+  <div class="container">
+    
+    <div class="title">Авторизация</div>
+    <div class="content">
+      
+      <form method="post" >
+        <div class="user-details">
+          
+          <div class="input-box">
+            <span class="details">Почта</span>
+            <input type="text" placeholder="Введите почту" asp-for="Email" required>
+          </div>
+        
+          <div class="input-box">
+            <span class="details">Пароль</span>
+            <input type="password" placeholder="Введите пароль" asp-for="Password" required>
+          </div>
+        
+
+        </div>
+        <div class="back-to-main">
+            <a href="@Url.Action("Index", "Home")">Вернуться на главную</a>
+        </div>
+        <div class="registration" style="width:30%;">
+            <button type="submit">Вход</button>
+        </div>
+            
+    </form>
+    </div>
+  </div>
+</body>

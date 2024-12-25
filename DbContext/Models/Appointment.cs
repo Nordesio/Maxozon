@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DbContext.Models
+namespace MaxozonContext.Models
 {
     public class Appointment
     {
@@ -17,6 +17,9 @@ namespace DbContext.Models
         public string LivingPlace { get; set; }
         public string Email {  get; set; }
         public string Sympthomes { get; set; }
+        public string? StartOfReception { get; set; }
+        public string? EndOfReception { get; set; }
+        public DateTime? DateOfReception { get; set; }
         public virtual Doctor? Doctor { get; set; }
     }
 }

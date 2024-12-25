@@ -1,0 +1,35 @@
+﻿@using MaxozonContext.Models;
+@model Patient;
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Личный кабинет </title>
+    <link rel="stylesheet" href="~/css/auth.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="title">Личные данные</div>
+        <div class="content">
+
+            
+                <div class="user-details">
+                <p class="user-info">Имя: @Model.Name</p>
+                <p class="user-info">Никнейм: @Model.Nickname</p>
+                <p class="user-info">Почта: @Model.Email</p>
+                <p class="user-info">Номер телефона: @Model.Phone</p>
+                <p class="user-info">Пол: @Model.Sex</p>
+                <p class="user-info">Аккаунт создан: @Model.Created</p>
+                </div>
+            <div class="back-to-main">
+                <a href="@Url.Action("Index", "Home")">Вернуться на главную</a>
+            </div>
+            <div class="back-to-main" style="width:30%; margin-right:0px;">
+                <a href="@Url.Action("EditUser", "Home")">Сменить пароль</a>
+            </div>
+        </div>
+    </div>
+</body>

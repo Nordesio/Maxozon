@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DbContext.Models
+namespace MaxozonContext.Models
 {
     public class Doctor
     {
@@ -12,6 +12,6 @@ namespace DbContext.Models
         public string Name { get; set; }
         public string Speciality { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<Patient> Patients { get; set; } = new List<Patient>();
+        public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }

@@ -1,0 +1,52 @@
+﻿@using MaxozonContext.Models;
+@model List<Appointment>
+@{
+    
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на прием</title>
+    <link rel="stylesheet" href="~/css/appointment.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Запись на прием</h1>
+        @if (Model.Count > 0)
+        {
+            
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Время начала приема</th>
+                    <th>Время окончания приема</th>
+                    <th>Имя Фамилия пациента</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.DateOfReception.HasValue ? item.DateOfReception.Value.ToString("dd.MM.yyyy") : "")</td>
+                        <td>@item.StartOfReception</td>
+                        <td>@item.EndOfReception</td>
+                        <td>@item.Surname  @item.Name  @item.Patronymic</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+        <div class="buttons">
+            <a href="@Url.Action("Index", "Home")">Назад</a>
+            <a href="@Url.Action("CreateAppointment", "Home")">Запись на прием</a>
+        </div>
+    </div>
+
+    <script>
+    </script>
+
+</body>

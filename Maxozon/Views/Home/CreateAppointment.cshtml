@@ -1,0 +1,44 @@
+﻿@using MaxozonContext.Models;
+@model Appointment;
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на прием</title>
+    <link rel="stylesheet" href="~/css/createappointment.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Запись на прием</h1>
+        <form method="post" >
+            <label for="first-name">Имя:</label>
+            <input type="text" id="first-name" asp-for="Name" required>
+
+            <label for="last-name">Фамилия:</label>
+            <input type="text" id="last-name" asp-for="Surname" required>
+
+            <label for="middle-name">Отчество:</label>
+            <input type="text" id="middle-name" asp-for="Patronymic" required>
+
+            <label for="birth-date">Дата рождения:</label>
+            <input type="date" id="birth-date" asp-for="BirthDate" required>
+
+            <label for="address">Место жительства:</label>
+            <input type="text" id="address" asp-for="LivingPlace" required>
+
+            <label for="email">Почта:</label>
+            <input type="email" id="email" asp-for="Email" required>
+            <input type="hidden" asp-for="DoctorId" value="@Model.DoctorId" />
+            <label for="symptoms">Симптомы:</label>
+            <textarea id="symptoms" asp-for="Sympthomes" rows="4" required ></textarea>
+            <div class="buttons">
+                <button type="submit">Записаться</button>
+                <a href="javascript:history.back()">Назад</a>
+            </div>
+            </form> 
+        
+    </div>
+</body>

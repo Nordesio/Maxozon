@@ -1,0 +1,53 @@
+﻿@using MaxozonContext.Models;
+@model Patient;
+@{
+
+    ViewData["Title"] = "Подтверждение почты";
+    Layout = null;
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Регистрация Максозон </title>
+    <link rel="stylesheet" href="~/css/auth.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="title">Подтверждение почты</div>
+        <div class="content">
+            <form method="post">
+                <div class="container">
+                    <div class="middle-text">На ваш email было отправленно письмо, пожалуйста, проверьте почту и введите код из письма</div>
+                </div>
+                <span class="content">
+
+                    <div class="details">
+                        <input class="input100" type="number" name="code" id="code">
+
+                        <span class="details" data-placeholder="Код"></span>
+                    </div>
+                    <div class="details">
+
+                        <button>
+                            Подтверждение
+                        </button>
+
+                    </div>
+            </form>
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript" charset="utf-8">
+                    window.onload = function () {
+                        alert("@ViewBag.Message");
+                    };
+                </script>
+            }
+           
+        </div>
+    </div>
+</body>
+
+

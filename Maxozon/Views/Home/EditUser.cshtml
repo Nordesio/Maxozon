@@ -1,0 +1,43 @@
+﻿@using MaxozonContext.Models;
+@model Patient;
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Редактирование пароля</title>
+    <link rel="stylesheet" href="~/css/registration.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="title">Редактирование пароля</div>
+        <div class="content">
+
+            <form method="post">
+                <div class="user-details">
+
+                    <div class="input-box">
+                        <span class="details">Пароль</span>
+                        <input type="password" placeholder="Введите пароль" asp-for="Password" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Повторение пароля</span>
+                        <input type="password" placeholder="Повторите пароль" name="Password_repeat" required>
+                    </div>
+
+
+                </div>
+                <div class="back-to-main" style="margin-right:50%">
+                    <a href="javascript:history.back()">Назад</a>
+                </div>
+                <div class="registration" style="width:15%;">
+                    <button type="submit">Изменить</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
