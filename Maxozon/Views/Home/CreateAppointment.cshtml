@@ -29,9 +29,15 @@
             <label for="address">Место жительства:</label>
             <input type="text" id="address" asp-for="LivingPlace" required>
 
-            <label for="email">Почта:</label>
-            <input type="email" id="email" asp-for="Email" required>
+            @if (ViewBag.Logged == 0 || ViewBag.Logged == null)
+            {
+                <label for="email">Почта:</label>
+                <input type="email" id="email" asp-for="Email" required>
+            }
+           
+
             <input type="hidden" asp-for="DoctorId" value="@Model.DoctorId" />
+
             <label for="symptoms">Симптомы:</label>
             <textarea id="symptoms" asp-for="Sympthomes" rows="4" required ></textarea>
             <div class="buttons">

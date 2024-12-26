@@ -17,6 +17,6 @@ namespace MaxozonContext.Models
         public string Password { get; set; }
         public DateTime? Created { get; set; }
         public string Sex { get; set; }
-
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

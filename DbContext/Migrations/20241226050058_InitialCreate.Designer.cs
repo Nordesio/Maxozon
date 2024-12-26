@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaxozonContext.Migrations
 {
     [DbContext(typeof(MaxozonDatabase))]
-    [Migration("20241225114758_InitialCreate")]
+    [Migration("20241226050058_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,9 @@ namespace MaxozonContext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PatientId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Patronymic")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -74,6 +77,8 @@ namespace MaxozonContext.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
 
                     b.ToTable("Appointments");
                 });
@@ -152,10 +157,21 @@ namespace MaxozonContext.Migrations
                         .WithMany("Appointments")
                         .HasForeignKey("DoctorId");
 
+                    b.HasOne("MaxozonContext.Models.Patient", "Patient")
+                        .WithMany("Appointments")
+                        .HasForeignKey("PatientId");
+
                     b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("MaxozonContext.Models.Doctor", b =>
+                {
+                    b.Navigation("Appointments");
+                });
+
+            modelBuilder.Entity("MaxozonContext.Models.Patient", b =>
                 {
                     b.Navigation("Appointments");
                 });

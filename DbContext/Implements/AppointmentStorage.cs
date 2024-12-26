@@ -46,6 +46,10 @@ namespace MaxozonContext.Implements
                  .FirstOrDefault();
         }
 
-
+        public List<Appointment> GetAllAppointmentsByPatient(int id)
+        {
+            using var db = new MaxozonDatabase();
+            return db.Appointments.Where(p => p.PatientId == id).ToList();
+        }
     }
 }

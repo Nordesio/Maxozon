@@ -60,7 +60,8 @@ namespace MaxozonContext.Migrations
                     Sympthomes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartOfReception = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EndOfReception = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfReception = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DateOfReception = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    PatientId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,12 +71,22 @@ namespace MaxozonContext.Migrations
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Appointments_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_DoctorId",
                 table: "Appointments",
                 column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_PatientId",
+                table: "Appointments",
+                column: "PatientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -84,10 +95,10 @@ namespace MaxozonContext.Migrations
                 name: "Appointments");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                name: "Doctors");
 
             migrationBuilder.DropTable(
-                name: "Doctors");
+                name: "Patients");
         }
     }
 }

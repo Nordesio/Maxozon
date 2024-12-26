@@ -7,6 +7,8 @@ using MaxozonContext.StorageInterfaces;
 using System.Xml.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 namespace Maxozon.Controllers
 {
     public class HomeController : Controller
@@ -149,13 +151,25 @@ namespace Maxozon.Controllers
         [HttpGet]
         public IActionResult Success()
         {
-            HttpContext.Session.SetInt32("logged", 1);
-            pre_registration_user.EmailConfirmed = true;
-            pre_registration_user.Created = DateTime.Now;
-            _patientStorage.InsertPatient(pre_registration_user);
-            auth_user = pre_registration_user;
-            HttpContext.Session.SetInt32("UserId", auth_user.Id);
+            if(_patientStorage.GetByEmail(pre_registration_user.Email) == null)
+            {
+                HttpContext.Session.SetInt32("logged", 1);
+                pre_registration_user.EmailConfirmed = true;
+                pre_registration_user.Created = DateTime.Now;
+                _patientStorage.InsertPatient(pre_registration_user);
+                auth_user = pre_registration_user;
+                HttpContext.Session.SetInt32("UserId", auth_user.Id);
+            }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.SetInt32("logged", 0);
+            HttpContext.Session.SetInt32("UserId", 0);
+            auth_user = null;
+            pre_registration_user = null;
+            return RedirectToAction(nameof(Index));
         }
         [HttpGet]
         public IActionResult DoubleAuth()
@@ -165,8 +179,28 @@ namespace Maxozon.Controllers
         public IActionResult Appointments(int Docid)
         {
             DateTime dt = DateTime.Now;
+            ViewBag.Logged = HttpContext.Session.GetInt32("UserId");
             HttpContext.Session.SetInt32("DoctorId", Docid);
             return View(_appointmentStorage.GetAllAvailableAppointmentsByDoctor(Docid, dt));
+        }
+        public IActionResult UserAppointments()
+        {
+            int? pat_id = HttpContext.Session.GetInt32("UserId");
+            List<Appointment> apps = new List<Appointment>();
+            if (pat_id != null)
+            {
+                apps = _appointmentStorage.GetAllAppointmentsByPatient((int)pat_id);
+
+                // Загрузка информации о врачах вручную
+                foreach (var app in apps)
+                {
+                    if (app.DoctorId.HasValue)
+                    {
+                        app.Doctor = _doctorStorage.GetDoctor(app.DoctorId.Value);
+                    }
+                }
+            }
+            return View(apps);
         }
         public IActionResult CreateAppointment()
         {
@@ -175,7 +209,7 @@ namespace Maxozon.Controllers
                 // Если DoctorId не найден в сессии, можно вернуть ошибку или перенаправить на другую страницу
                 return RedirectToAction("Index", "Home");
             }
-
+            ViewBag.Logged = HttpContext.Session.GetInt32("UserId");
             int docId = HttpContext.Session.GetInt32("DoctorId") ?? 0;
             var appointment = new Appointment { DoctorId = docId };
             return View(appointment);
@@ -229,7 +263,17 @@ namespace Maxozon.Controllers
             appointment.StartOfReception = startOfReception.ToString("HH:mm");
             appointment.EndOfReception = endOfReception.ToString("HH:mm");
             appointment.DateOfReception = startOfReception; // Прием на следующий день
-
+            int? id = 0;
+            if(auth_user == null)
+            {
+                id = null;
+            }
+            else
+            {
+                id = auth_user.Id;
+                appointment.Email = auth_user.Email;
+            }
+            appointment.PatientId = id;
             _appointmentStorage.InsertAppointment(appointment);
 
             return RedirectToAction(nameof(Appointments), new { Docid = docId });

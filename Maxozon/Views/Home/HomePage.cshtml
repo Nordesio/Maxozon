@@ -24,11 +24,17 @@
                 <p class="user-info">Пол: @Model.Sex</p>
                 <p class="user-info">Аккаунт создан: @Model.Created</p>
                 </div>
-            <div class="back-to-main">
+            <div class="back-to-main" style="margin-right:0px;">
                 <a href="@Url.Action("Index", "Home")">Вернуться на главную</a>
             </div>
             <div class="back-to-main" style="width:30%; margin-right:0px;">
                 <a href="@Url.Action("EditUser", "Home")">Сменить пароль</a>
+            </div>
+            <div class="back-to-main" style="margin-right:0px;">
+                <a href="@Url.Action("UserAppointments", "Home")">Посмотреть все записи</a>
+            </div>
+            <div class="back-to-main" style="width:30%;margin-top: 1%;margin-left: 31.5%; margin-right:0px;background-color: #ff4646;">
+                <a href="@Url.Action("Logout", "Home")">Выйти из аккаунта</a>
             </div>
         </div>
     </div>

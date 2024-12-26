@@ -21,5 +21,7 @@ namespace MaxozonContext.Models
         public string? EndOfReception { get; set; }
         public DateTime? DateOfReception { get; set; }
         public virtual Doctor? Doctor { get; set; }
+        public int? PatientId { get; set; }
+        public virtual Patient? Patient { get; set; }
     }
 }

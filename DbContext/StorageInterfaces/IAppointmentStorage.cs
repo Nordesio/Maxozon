@@ -13,5 +13,6 @@ namespace MaxozonContext.StorageInterfaces
         List<Appointment> GetAllAppointmentsByDoctor(Doctor doctor);
         List<Appointment> GetAllAvailableAppointmentsByDoctor(int id, DateTime currentDate);
         Appointment? GetLastAppointmentByDoctor(int doctorId);
+        List<Appointment> GetAllAppointmentsByPatient(int id);
     }
 }

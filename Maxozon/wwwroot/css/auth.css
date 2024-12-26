@@ -1,6 +1,10 @@
 /* Importing Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+html {
+    background: url('/fone.jpg') no-repeat center center/cover;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -41,12 +45,12 @@ input{
     margin-bottom:1%;
 }
 body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background: url('фонслогана.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: url('/фонслогана.jpg') no-repeat center center/cover;
 }
 
 .container {
